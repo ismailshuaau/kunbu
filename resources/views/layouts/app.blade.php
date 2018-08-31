@@ -26,7 +26,7 @@
 
   </head>
 
-  <body>
+  <body class="@yield('body-class')">
 
     <!-- Navbar and Header -->
     <nav class="nav-extended @yield('header-type') cyan lighten-2">
@@ -338,6 +338,10 @@
     <!-- Javascript Libs -->
     <script src="js/select2.full.min.js"></script>
 
+    <!-- Body extra -->
+    @yield('body-extra')
+
+
     <script type="text/javascript">
       $(document).ready(function(){
         $('.modal').modal();
@@ -456,9 +460,7 @@
       }
     </script>
 
-    <!-- Body extra -->
-    @yield('body-extra')
-
+    
 
   </body>
 </html>

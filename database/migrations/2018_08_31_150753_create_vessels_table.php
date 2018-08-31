@@ -16,6 +16,12 @@ class CreateVesselsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
+            $table->string('reg_number');
+            $table->integer('capacity_seat');
+            $table->integer('capacity_volume');
+            $table->integer('capacity_weight');
+            $table->string('speed');
+
 
             $table->integer('type_id')->unsigned();
             $table->foreign('type_id')->references('id')->on('types');

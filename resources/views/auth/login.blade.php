@@ -23,7 +23,7 @@
     <div class="login">
       <div class="container">
         <div class="row">
-          <div class="col s12 m6 offset-m3">
+          <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card-panel">
               <p class="center grey-text text-darken-3"><i class="material-icons large">fingerprint</i></p>
               <h5 class="center grey-text text-darken-3">Login</h5>
@@ -49,4 +49,9 @@
 @endsection
 
 @section('body-extra')
+  <script type="text/javascript">
+    $(document).ready(function() {
+      Materialize.updateTextFields();
+    });
+  </script>
 @endsection

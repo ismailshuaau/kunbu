@@ -16,7 +16,9 @@ class CreateSuperadminsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('mobile');
             $table->string('password');
+            $table->boolean('verified');
             $table->rememberToken();
             $table->timestamps();
         });

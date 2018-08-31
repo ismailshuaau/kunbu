@@ -7,6 +7,10 @@
     nav-full-header
 @endsection
 
+@section('body-class')
+    grey darken-3
+@endsection
+
 @section('nav-sliders-bg')
       <div class="nav-background">
         <img class="active" src="http://placehold.it/1400x700" alt="cityscape">
@@ -23,7 +27,7 @@
     <div class="register">
       <div class="container">
         <div class="row">
-          <div class="col s12 m6 offset-m3">
+          <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card-panel">
               <p class="center grey-text text-darken-3"><i class="material-icons large">person_add</i></p>
               <h5 class="center grey-text text-darken-3">Register</h5>
@@ -67,4 +71,9 @@
 @endsection
 
 @section('body-extra')
+  <script type="text/javascript">
+    $(document).ready(function() {
+      Materialize.updateTextFields();
+    });
+  </script>
 @endsection
