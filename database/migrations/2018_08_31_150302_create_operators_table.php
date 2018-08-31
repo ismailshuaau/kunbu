@@ -18,9 +18,8 @@ class CreateOperatorsTable extends Migration
             $table->string('mobile');
             $table->string('email')->unique();
             $table->string('password');
-
-            $table->integer('type_id')->unsigned();
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->boolean('verified');
+            $table->boolean('status');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -45,6 +45,7 @@
               <div class="card-content grey lighten-4">
                 <div id="userinfo">
                   <form id="operator-info">
+                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="input-field">
                       <input placeholder="Enter Full Name" id="fullname" name="fullname" type="text" class="validate">
                       <label for="fullname">Full Name</label>
@@ -90,7 +91,7 @@
                       <label for="vesselname">Vessel Name</label>
                     </div>
                     <div class="input-field">
-                      <input placeholder="Enter Registration Number" id="registrationnumber" name="registrationnumber" type="email" class="validate">
+                      <input placeholder="Enter Registration Number" id="registrationnumber" name="registrationnumber" type="text" class="validate">
                       <label for="registrationnumber">Reg Number</label>
                     </div>
                     <div class="input-field">
@@ -110,13 +111,11 @@
                       <label for="speed">Speed</label>
                     </div>
                     <div class="input-field center">
-                      <button class="btn waves-effect waves-light" onclick="Register()">Register</button>
+                      <button class="btn waves-effect waves-light" onclick="Register()" type="button">Register</button>
                     </div>
                   </form>
                 </div>
               </div>
-
-
 
               <br/>
               <p class="center"><a href="register">Click here for USER registration.</a></p>
@@ -156,19 +155,17 @@
       function Register() {
         var serializedData = $('#operator-info, #vessel-info').serialize();
         console.log(serializedData);
-        // $.ajax({
-        //   url: "registeroperator",
-        //   context: document.body
-        // }).done(function(data) {
-        //   console.log(data)
-        // });
         $.ajax({
-          type: "POST",
-          url: 'registeroperator',
-          data: serializedData,
-          success: function(){
-            alert('success');
-          },
+            url: 'registeroperator',
+            contentType: 'application/json',
+            data: serializedData,
+            dataType: "json",
+            success: function( data, textStatus, jQxhr ){
+                console.log(data);
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
         });
       }
     </script>

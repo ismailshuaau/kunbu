@@ -22,6 +22,8 @@ Route::get('login', function () { return view('login'); });
 Route::get('register', function () { return view('register'); });
 Route::get('operator', function () { return view('operator'); });
 
+Route::post('registeroperator', 'OperatorController@registerOperatorWithVessel');
+Route::get('registeroperator', 'OperatorController@registerOperatorWithVessel');
 
 Route::auth();
 
