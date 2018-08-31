@@ -1,66 +1,52 @@
 @extends('layouts.app')
 
+@section('head-extra')
+@endsection
+
+@section('header-type')
+    nav-full-header
+@endsection
+
+@section('nav-sliders-bg')
+      <div class="nav-background">
+        <img class="active" src="http://placehold.it/1400x700" alt="cityscape">
+      </div>
+@endsection
+
+@section('nav-sliders-slide')
+@endsection
+
+@section('nav-extra')
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                            </div>
-                        </div>
-                    </form>
+    <div class="login">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m6 offset-m3">
+            <div class="card-panel">
+              <p class="center grey-text text-darken-3"><i class="material-icons large">fingerprint</i></p>
+              <h5 class="center grey-text text-darken-3">Login</h5>
+              <form>
+                <div class="input-field">
+                  <input placeholder="Enter Username" id="username" name="username" type="text" class="validate">
+                  <label for="username">Username</label>
                 </div>
+                <div class="input-field">
+                  <input placeholder="Enter Password" id="password" name="password" type="password" class="validate">
+                  <label for="password">Password</label>
+                </div>
+                <div class="input-field center">
+                  <button class="btn waves-effect waves-light">Login</button>
+                  <button class="btn waves-effect waves-light blue darken-3"><i class="ion-social-facebook left"></i> Facebook</button>
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+@endsection
+
+@section('body-extra')
 @endsection

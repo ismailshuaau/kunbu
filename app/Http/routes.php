@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    // return 'hellow world';
-    return view('welcome');
-});
+Route::get('/home', function () { return view('home'); });
+Route::get('/', function () { return view('home'); });
+
+Route::get('destinations', function () { return view('destinations'); });
+Route::get('vessels', function () { return view('vessels'); });
+Route::get('logistics', function () { return view('logistics'); });
+Route::get('about', function () { return view('about'); });
+Route::get('login', function () { return view('login'); });
+Route::get('register', function () { return view('register'); });
+Route::get('operator', function () { return view('operator'); });
+
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
