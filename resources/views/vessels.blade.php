@@ -1,11 +1,20 @@
 @extends('layouts.app')
 
 @section('head-extra')
+  <style type="text/css">
+    nav .nav-background img, nav .nav-background .pattern {
+      filter: none;
+    }
+
+    nav .nav-background {
+      opacity: .8;
+    }
+  </style>
 @endsection
 
 @section('nav-sliders-bg')
 			<div class="nav-background">
-        <div class="pattern active" style="background-image: url('http://placehold.it/1400x300');"></div>
+        <div class="pattern active" style="background-image: url('img/vessels.png');"></div>
       </div>
 @endsection
 
@@ -139,7 +148,7 @@
                           </p>
                         </div>
                         <div class="card-action">
-                          <a class="waves-effect waves-light btn green" href="#private-hire">Private Hire</a>
+                          <a class="waves-effect waves-light btn green" onclick="privateHire({{ $vessel->id }})">Private Hire</a>
                         </div>
                       </div>
                     </div>
@@ -262,6 +271,11 @@
       $('#bookingvesselid').val(vesselid);
       $('#bookingscheduleid').val(scheduleid);
       $('#book-seat').modal('open');
+    }
+
+    function privateHire(vesselid) {
+      $('#hirevesselid').val(vesselid);
+      $('#private-hire').modal('open');
     }
   </script>
 @endsection
