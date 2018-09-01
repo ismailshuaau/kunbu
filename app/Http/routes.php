@@ -19,8 +19,16 @@ Route::get('destinations', function () { return view('destinations'); });
 Route::get('logistics', function () { return view('logistics'); });
 Route::get('excursion', function () { return view('excursion'); });
 Route::get('about', function () { return view('about'); });
-Route::get('login', function () { return view('login'); });
-Route::get('register', function () { return view('register'); });
+// Route::get('login', function () { return view('login'); });
+// Route::get('register', function () { return view('register'); });
+
+// Users
+Route::get('registerUser', 'RegistrationController@create');
+Route::post('registerUser', 'RegistrationController@store');
+
+Route::get('loginUser', 'SessionsController@create');
+
+
 // Route::get('operator', function () {  });
 
 Route::get('vessels', 'VesselsController@index');
