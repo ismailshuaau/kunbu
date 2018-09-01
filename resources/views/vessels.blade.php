@@ -160,7 +160,7 @@
                         </div>
                         <div class="card-action">
                           <a class="modal-trigger waves-effect waves-light btn grey" onclick="showRoutes({{ $schedule->id }})" data-schedule-name="{{ $schedule->name }}">More</a>
-                          <a class="waves-effect waves-light btn cyan" href="#book-seat">Book Seat</a>
+                          <a class="waves-effect waves-light btn cyan" onclick="bookSeat({{ $vessel->id }}, {{ $schedule->id }})">Book Seat</a>
                         </div>
                       </div>
                     </div>
@@ -256,6 +256,12 @@
         swal("Failed", "Failed to process", "error");
       });
 
+    }
+
+    function bookSeat(vesselid, scheduleid) {
+      $('#bookingvesselid').val(vesselid);
+      $('#bookingscheduleid').val(scheduleid);
+      $('#book-seat').modal('open');
     }
   </script>
 @endsection

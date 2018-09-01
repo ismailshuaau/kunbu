@@ -191,50 +191,55 @@
         <h5>Book Seat<br/><small>Fill the form below and click reserve.</small></h5>
       </div>
       <div class="modal-content">
-        <form>
+        <form id="bookingForm" method="POST" action="booking">
+          <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+          <input type="hidden" name="bookingvesselid" id="bookingvesselid">
+          <input type="hidden" name="bookingscheduleid" id="bookingscheduleid">
           <div class="row">
             <div class="input-field col s12 m6">
-              <input placeholder="Enter First Name" id="firstname" type="text" class="validate">
+              <input placeholder="Enter First Name" id="firstname" name="firstname" type="text" class="validate">
               <label for="firstname">First Name</label>
             </div>
             <div class="input-field col s12 m6">
-              <input placeholder="Enter Last Name" id="lastname" type="text" class="validate">
+              <input placeholder="Enter Last Name" id="lastname" name="lastname" type="text" class="validate">
               <label for="lastname">Last Name</label>
             </div>
             <div class="input-field col s12 m6">
-              <input placeholder="Enter Mobile Number" id="mobilenum" type="text" class="validate">
+              <input placeholder="Enter Mobile Number" id="mobilenum" name="mobilenum" type="text" class="validate">
               <label for="mobilenum">Mobile</label>
             </div>
             <div class="input-field col s12 m6">
-              <input placeholder="Enter Email Address" id="email" type="email" class="validate">
+              <input placeholder="Enter Email Address" id="email" name="email" type="email" class="validate">
               <label for="email">Email</label>
             </div>
             <div class="input-field col s12 m6">
-              <select>
+              <select id="islandfrom" name="islandfrom">
                 <option value="" disabled selected>Choose an option</option>
-                <option value="1">Mathiveri</option>
-                <option value="2">Ukulhas</option>
-                <option value="3">Rasdhoo</option>
-                <option value="4">Male'</option>
-                <option value="5">Airport</option>
+                <option value="Aa.Mathiveri">Aa. Mathiveri</option>
+                <option value="Aa.Bodufolhudhoo">Aa. Bodufolhudhoo</option>
+                <option value="Aa.Ukulhas">Aa. Ukulhas</option>
+                <option value="Aa.Rasdhoo">Aa. Rasdhoo</option>
+                <option value="K.Male">K. Male'</option>
+                <option value="K.Airport">K. Airport</option>
               </select>
               <label class="active">From</label>
             </div>
             <div class="input-field col s12 m6">
-              <select>
+              <select id="islandto" name="islandto">
                 <option value="" disabled selected>Choose an option</option>
-                <option value="1">Mathiveri</option>
-                <option value="2">Ukulhas</option>
-                <option value="3">Rasdhoo</option>
-                <option value="4">Male'</option>
-                <option value="5">Airport</option>
+                <option value="Aa.Mathiveri">Aa. Mathiveri</option>
+                <option value="Aa.Bodufolhudhoo">Aa. Bodufolhudhoo</option>
+                <option value="Aa.Ukulhas">Aa. Ukulhas</option>
+                <option value="Aa.Rasdhoo">Aa. Rasdhoo</option>
+                <option value="K.Male">K. Male'</option>
+                <option value="K.Airport">K. Airport</option>
               </select>
               <label class="active">To</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12 m6">
-              <select>
+              <select id="tickettype" name="tickettype">
                 <option value="" disabled selected>Choose ticket type</option>
                 <option value="1">One Way</option>
                 <option value="2">Two Way</option>
@@ -242,18 +247,18 @@
               <label class="active">Ticket Type</label>
             </div>
             <div class="input-field col s12 m6">
-              <input placeholder="Enter Number of Seats" id="noofseats" type="number" class="validate">
+              <input placeholder="Enter Number of Seats" id="noofseats" name="noofseats" type="number" class="validate">
               <label for="noofseats">No of Seats</label>
             </div>
             <div class="input-field col s12">
               <textarea placeholder="Enter a message if required!" id="message" name="message" class="materialize-textarea"></textarea>
-              <label for="message">Textarea</label>
+              <label for="message">Message</label>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Reserve</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="$('#bookingForm').submit()">Reserve</a>
       </div>
     </div>
 

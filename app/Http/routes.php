@@ -38,6 +38,8 @@ Route::get('followme', 'VesselsController@track');
 
 Route::post('message', 'MessagesController@contact');
 
+Route::post('booking', 'TicketsController@booking');
+
 
 //operator links
 Route::get('operator', 'OperatorController@index');
@@ -67,6 +69,9 @@ Route::group(['prefix' => 'operator'], function () {
 
 	Route::get('messages', 'MessagesController@indexAdmin');
 
+	Route::get('tickets', 'TicketsController@indexAdmin');
+	Route::get('tickets/approve', 'TicketsController@approveTicket');
+	Route::get('tickets/paid', 'TicketsController@markPaid');
 
 });
 
