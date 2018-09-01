@@ -31,7 +31,7 @@
             <div class="card-panel">
               <p class="center grey-text text-darken-3"><i class="material-icons large">person_add</i></p>
               <h5 class="center grey-text text-darken-3">Register</h5>
-              <form method="POST" action="/register">
+              <form method="POST" action="/registerUser">
                 {{ csrf_field() }}
                 <div class="input-field">
                   <input placeholder="Enter Full Name" id="username" name="username" type="text" class="validate">
@@ -42,11 +42,11 @@
                   <label for="email">Email</label>
                 </div>
                 <div class="input-field">
-                  <input placeholder="Enter Mobile Number" id="tel" name="tel" type="tel" class="validate">
+                  <input placeholder="Enter Mobile Number" id="tel" name="mobile" type="tel" class="validate">
                   <label for="tel">Mobile</label>
                 </div>
                 <div class="input-field">
-                  <input placeholder="Enter Username" id="username" name="username" type="text" class="validate">
+                  <input placeholder="Enter Username" id="username" name="name" type="text" class="validate">
                   <label for="username">Username</label>
                 </div>
                 <div class="input-field">
