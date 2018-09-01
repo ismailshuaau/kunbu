@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('head-extra')
+  <style type="text/css">
+    nav .nav-background img, nav .nav-background .pattern {
+      filter: none;
+    }
+
+    nav .nav-background {
+      opacity: .9;
+    }
+  </style>
 @endsection
 
 @section('header-type')
@@ -9,7 +18,7 @@
 
 @section('nav-sliders-bg')
       <div class="nav-background">
-        <img class="active" src="http://placehold.it/1400x700" alt="cityscape">
+        <img class="active" src="img/slide5.3.png" alt="cityscape">
       </div>
 @endsection
 
@@ -41,6 +50,8 @@
                   <button class="btn waves-effect waves-light blue darken-3"><i class="ion-social-facebook left"></i> Facebook</button>
                 </div>
               </form>
+              <br/>
+              <p class="center"><a href="{{url ('operator/login') }}">Click here for OPERATOR login.</a></p>
             </div>
           </div>
         </div>

@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('head-extra')
+  <style type="text/css">
+    nav .nav-background img, nav .nav-background .pattern {
+      filter: none;
+    }
+
+    nav .nav-background {
+      opacity: .9;
+    }
+  </style>
 @endsection
 
 @section('header-type')
@@ -9,9 +18,9 @@
 
 @section('nav-sliders-bg')
 			<div class="nav-background">
-        <img class="active" src="http://placehold.it/1900x1080" alt="cityscape">
-        <img src="http://placehold.it/1400x800" alt="cityscape">
-        <img src="http://placehold.it/1400x900" alt="cityscape">
+        <img class="active" src="img/slide2.png" alt="cityscape">
+        <img src="img/slide3.png" alt="cityscape">
+        <img src="img/slide5.3.png" alt="cityscape">
       </div>
 @endsection
 
@@ -19,21 +28,21 @@
 			<div class="nav-header valign-wrapper">
         <div class="carousel carousel-slider center" data-indicators="true">
           <div class="carousel-item white-text" href="#one!">
-            <div class="container valign-wrapper">
+            <div class="container valign-wrapper cyan-text text-lighten-2">
               <h1>KUNBU.MV</h1>
-              <div class="tagline">Discover Maldives. Transfer to anywhere, anytime.</div>
+              <div class="tagline cyan-text text-lighten-2">Discover Maldives. Transfer to anywhere, anytime.</div>
             </div>
           </div>
           <div class="carousel-item white-text" href="#two!">
-            <div class="container valign-wrapper">
+            <div class="container valign-wrapper cyan-text text-lighten-5">
               <h1>DISCOVER MALDIVES</h1>
               <div class="tagline">A complete sea transfer management system for the first time in maldives.</div>
             </div>
           </div>
           <div class="carousel-item white-text" href="#three!">
-            <div class="container valign-wrapper">
+            <div class="container valign-wrapper cyan-text">
               <h1>RESERVE YOUR TRANSFER</h1>
-              <div class="tagline">Reserve transfer to any location, any time.</div>
+              <div class="tagline cyan-text">Reserve transfer to any location, any time.</div>
             </div>
           </div>
         </div>
@@ -53,17 +62,22 @@
               <label for="dateon">Date</label>
             </div>
             <div class="input-field col s12 m4">
-              <select id="island-from" placeholder="Enter Island / Atoll">
+              <select id="island-from" name="island-from" placeholder="Enter Island / Atoll">
                 <option value="" disabled selected>Choose island</option>
-                <option value="1">Aa.Ukulhas</option>
-                <option value="2">Aa.Rasdhoo</option>
-                <option value="3">Aa.Mathiveri</option>
+                @foreach($islands as $island)
+                <option value="{{ $island->id }}">{{ $island->atoll }}. {{ $island->island }}</option>
+                @endforeach
               </select>
               <label for="island-from" class="active">From</label>
             </div>
             <div class="input-field col s12 m4">
-              <input type="text" id="autocomplete-input" class="autocomplete" placeholder="Enter Island / Atoll">
-              <label for="autocomplete-input">To</label>
+              <select id="island-to" name="island-to" placeholder="Enter Island / Atoll">
+                <option value="" disabled selected>Choose island</option>
+                @foreach($islands as $island)
+                <option value="{{ $island->id }}">{{ $island->atoll }}. {{ $island->island }}</option>
+                @endforeach
+              </select>
+              <label for="island-to" class="active">From</label>
             </div>
             <div class="input-field col s12 center">
               <button class="waves-effect waves-light btn cyan darken-2 grey-text text-lighten-3" type="button" id="submit-search"><i class="material-icons left">search</i>search</button>
@@ -93,11 +107,12 @@
     <div id="vessels" class="section gray">
       <div class="container">
         <div class="gallery row">
+          @foreach($vessels as $vessel)
           <div class="col l4 m6 s12 gallery-item gallery-expand gallery-filter topselling">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <span class="offerpromo green lighten-1">20 seats available for Today</span>
-                <img class="responsive-img" src="img/nevi-1.png" alt="Vessel Name : Number of Seats Left">
+                <img class="responsive-img" src="{{ url($vessel->image_path) }}" alt="{{ $vessel->name }}">
                 <span class="rating">
                   <i class="material-icons">star</i>
                   <i class="material-icons">star</i>
@@ -107,18 +122,18 @@
                 </span>
               </a>
               <div class="gallery-header">
-                <span class="title">Nevi</span></br>
+                <span class="title">{{ $vessel->name }}</span></br>
                 <span>Travels To: Rasdhoo, Ukulhas, Mathiveri, Male' &amp; Airport</span></br>
-                <span>Speed: 48.25 km/h</span></br>
-                <span>Capacity: 27 seats</span></br>
+                <span>Speed: {{ $vessel->speed }}</span></br>
+                <span>Capacity: {{ $vessel->capacity_seat }} seats</span></br>
               </div>
               <div class="gallery-body">
                 <div class="title-wrapper">
                   <h3>Nevi</h3>
-                  <span class="price">Price: Please login to see the price</span>
-                  <span class="capacity">Seat Capacity: 27 seats, Speed: 48.25 km/h</span>
+                  <span class="price">Price: N/A</span>
+                  <span class="capacity">Seat Capacity: {{ $vessel->capacity_seat }} seats, Speed: {{ $vessel->speed }}</span>
                 </div>
-                <p class="description">iterally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice.</p>
+                <p class="description">{{ $vessel->description }}</p>
 
                 <div class="carousel-wrapper">
                   <div class="carousel">
@@ -152,7 +167,7 @@
                                   <option value="4">Male'</option>
                                   <option value="5">Airport</option>
                                 </select>
-                                <label class="active">From</label>
+                                <label>From</label>
                               </div>
 
                               <div class="input-field col s12 m6 l3">
@@ -164,7 +179,7 @@
                                   <option value="4">Male'</option>
                                   <option value="5">Airport</option>
                                 </select>
-                                <label class="active">To</label>
+                                <label>To</label>
                               </div>
 
                               <div class="input-field col s12 m6 l3">
@@ -184,7 +199,7 @@
                     <div class="col l4 m6 s12">
                       <div class="card-schedule-item card hoverable">
                         <div class="card-content">
-                          <span class="card-title">Private Hire</br><small>25 April, 2017</small></span>
+                          <span class="card-title">Private Hire</br><small>{{ date('d M Y') }}</small></span>
                           <p>
                             Travels to: Mathiveri , Ukulhas, Rasdhoo, Male' &amp; Airport
                             <span style="display: block">Seats Available: 20 seats</span>
@@ -197,39 +212,28 @@
                       </div>
                     </div>
 
+                    @foreach($vessel->schedules as $schedule)
                     <div class="col l4 m6 s12">
                       <div class="card-schedule-item card hoverable">
                         <div class="card-content">
-                          <span class="card-title">Male' to Alif Alif (Aa) Atoll</br><small>25 April, 2017</small></span>
+                          <span class="card-title">{{ $schedule->name }}</br><small>{{ date('d M Y') }}</small></span>
                           <p>
-                            Travels to: Male', Airport, Rasdhoo, Ukulhas &amp; Mathiveri
+                            Travels to: 
+                            @foreach($schedule->routes as $route)
+                            {{ $route->island->island }}, 
+                            @endforeach
                             <span style="display: block">Seats Available: 20 seats</span>
-                            <span style="display: block">Shedule Starts: 10:30 AM</span>
+                            <span style="display: block">Shedule Starts: {{ $schedule->start_time }}</span>
                           </p>
                         </div>
                         <div class="card-action">
-                          <a class="modal-trigger waves-effect waves-light btn grey" href="#modal-schedule-more">More</a>
+                          <a class="modal-trigger waves-effect waves-light btn grey" onclick="showRoutes({{ $schedule->id }})" data-schedule-name="{{ $schedule->name }}">More</a>
                           <a class="waves-effect waves-light btn cyan" href="#book-seat">Book Seat</a>
                         </div>
                       </div>
                     </div>
+                    @endforeach
 
-                    <div class="col l4 m6 s12">
-                      <div class="card-schedule-item card hoverable">
-                        <div class="card-content">
-                          <span class="card-title">Alif Alif (Aa) Atoll to Male'</br><small>25 April, 2017</small></span>
-                          <p>
-                            Travels to: Mathiveri , Ukulhas, Rasdhoo, Male &amp; Airport
-                            <span style="display: block">Seats Available: 20 seats</span>
-                            <span style="display: block">Shedule Starts: Mathiveri: 12:30 PM</span>
-                          </p>
-                        </div>
-                        <div class="card-action">
-                          <a class="modal-trigger waves-effect waves-light btn grey" href="#modal-schedule-more">More</a>
-                          <a class="waves-effect waves-light btn cyan" href="#book-seat">Book Seat</a>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
 
@@ -278,13 +282,14 @@
 
               </div>
               <div class="gallery-action">
-                <a class="btn-floating btn-large waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Contact Informations" onclick="loadContactInfo(1)"><i class="material-icons">phone</i></a>
-                <a class="btn-floating btn-large waves-effect waves-light grey tooltipped" data-position="bottom" data-delay="50" data-tooltip="Send a Message" onclick="sendMessage(1)"><i class="material-icons">message</i></a>
-                <a class="btn-floating btn-large waves-effect waves-light cyan tooltipped" data-position="bottom" data-delay="50" data-tooltip="Locate Vessel" onclick="loadLocation(2979)"><i class="material-icons">location_on</i></a> 
-                <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Like" onclick="addToFavorite(1)"><i class="material-icons">favorite</i></a> 
+                <a class="btn-floating btn-large waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Contact Informations" onclick="loadContactInfo({{ $vessel->id }})"><i class="material-icons">phone</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light grey tooltipped" data-position="bottom" data-delay="50" data-tooltip="Send a Message" onclick="sendMessage({{ $vessel->id }})"><i class="material-icons">message</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light cyan tooltipped" data-position="bottom" data-delay="50" data-tooltip="Locate Vessel" onclick="loadLocation({{ $vessel->tracking_id }})"><i class="material-icons">location_on</i></a> 
+                <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Like" onclick="addToFavorite({{ $vessel->id }})"><i class="material-icons">favorite</i></a> 
               </div>
             </div>
           </div>
+          @endforeach
           <div class="col l4 m6 s12 gallery-item gallery-expand gallery-filter featured">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">

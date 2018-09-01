@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css?family=Hammersmith+One|Montserrat");
+@font-face {
+  font-family: Faruma;
+  src: url("../fonts/Faruma.otf"); }
+@font-face {
+  font-family: Faseyha;
+  src: url("../fonts/MV_Faseyha.otf"); }
+.font-hammer {
+  font-family: 'Hammersmith One', sans-serif; }
+
+.font-mont {
+  font-family: 'Montserrat', sans-serif; }
+
+/*
+* VoidBinary Branding
+*/
+html {
+  font-family: 'Montserrat', sans-serif; }
+
+.brand-logo {
+  font-family: 'Hammersmith One', sans-serif; }
+
+.side-nav .brand-logo {
+  height: 300px !important;
+  width: 100%;
+  padding: 30px;
+  position: static; }
+  .side-nav .brand-logo img {
+    width: calc(100% - 0px);
+    height: calc(100% - 0px ); }
+.side-nav hr {
+  margin: 0px; }
+.side-nav .userView {
+  position: relative;
+  padding: 13px 32px 13px;
+  margin-bottom: 8px; }
+
+nav.nav-breadcrumb {
+  height: 42px;
+  line-height: 42px; }
+  nav.nav-breadcrumb .breadcrumb {
+    font-size: 14px; }
+
+footer.page-footer {
+  background-color: #b71b1c; }
+  footer.page-footer .footer-copyright {
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px; }
+
+.home-title {
+  height: 500px;
+  margin-bottom: 50px; }
+
+.bg1 {
+  background-image: url("../img/bg1.jpg");
+  background-position: center center;
+  background-size: 100% auto; }
+
+.collection-dir .material-icons {
+  position: absolute; }
+.collection-dir .title {
+  padding-left: 50px; }
+
+.container-pad {
+  padding-top: 30px;
+  padding-bottom: 20px; }
+
+footer.page-footer {
+  margin-top: 0px;
+  padding-top: 0px; }
+
+.card-login {
+  margin-top: 100px; }
+
+.margin-left-m10-lg {
+  margin-left: -10px; }
+
+.margin-left-10-m {
+  margin-left: auto; }
+
+.side-nav-margin-left-on-large {
+  margin-left: 310px; }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+main {
+  flex: 1 0 auto; }
+
+.slider-image img {
+  width: 100%; }
+
+.useraccess {
+  padding-right: 20px; }
+
+.input-field-dh {
+  direction: rtl;
+  font-family: Faruma; }
+  .input-field-dh label {
+    text-align: right;
+    padding-right: 1.50rem; }
+
+.ref-woff-40 {
+  width: calc(50% - 40px) !important; }
+
+.modal-fullscreen {
+  max-height: 100%;
+  min-height: 100%;
+  height: 100%; }
+
+.fr-wrapper ~ div {
+  display: none !important; }
+
+@media only screen and (max-width: 991px) {
+  .side-nav-margin-left-on-large {
+    margin-left: 0px; }
+
+  .margin-left-m10-lg {
+    margin-left: auto; }
+
+  .margin-left-10-m {
+    margin-left: 10px; } }
+.btn.first {
+  margin-right: 5px; }
+
+.btn.previous {
+  margin-right: 5px; }
+
+.btn.next {
+  margin-left: 5px; }
+
+.btn.last {
+  margin-left: 5px; }
+
+.row.table {
+  overflow: hidden;
+  overflow-x: scroll; }
+
+.row.table::-webkit-scrollbar {
+  width: 12px;
+  /* for vertical scrollbars */
+  height: 6px;
+  /* for horizontal scrollbars */ }
+
+.row.table::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); }
+
+.row.table::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5); }
+
+.pagination li.active {
+  background-color: #00838f; }
+
+table.dataTable thead th, table.dataTable thead td, table.dataTable tbody th, table.dataTable tbody td {
+  border-bottom: 1px solid #d8d8d8 !important; }
+
+table.dataTable.no-footer {
+  border-bottom: 1px solid #c5c5c5 !important; }
+
+.side-nav-footer {
+  bottom: 60px;
+  position: absolute;
+  height: 40px;
+  line-height: 40px;
+  width: 300px;
+  padding-left: 35px; }
+  .side-nav-footer p {
+    margin: 0;
+    font-size: 12px; }
+
+.user-info-container img {
+  height: 200px;
+  width: 100%; }
+.user-info-container .card-user {
+  width: 250px;
+  margin-left: calc(50% - 125px);
+  margin-top: -110px;
+  position: relative; }
+  .user-info-container .card-user .user-image {
+    width: 100px;
+    height: 100px;
+    margin-left: 50px; }
+  .user-info-container .card-user .name {
+    font-size: medium;
+    text-align: center;
+    margin-bottom: 5px; }
+  .user-info-container .card-user .designation {
+    text-align: center;
+    font-size: small;
+    margin-top: 0px; }
+
+.fc .fc-toolbar {
+  padding-top: 10px; }
+  .fc .fc-toolbar h2 {
+    font-size: 24px; }
+.fc .fc-event {
+  padding: 5px; }
+
+.sweet-alert .sa-icon.sa-info {
+  border-color: #00acc1 !important; }
+.sweet-alert .sa-icon.sa-info::before {
+  background-color: #00acc1 !important; }
+.sweet-alert .sa-icon.sa-info::after {
+  background-color: #00acc1 !important; }
+
+/*# sourceMappingURL=voidcloud.css.map */

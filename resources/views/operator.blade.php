@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('head-extra')
+  <style type="text/css">
+    nav .nav-background img, nav .nav-background .pattern {
+      filter: none;
+    }
+
+    nav .nav-background {
+      opacity: .9;
+    }
+  </style>
 @endsection
 
 @section('header-type')
@@ -13,7 +22,7 @@
 
 @section('nav-sliders-bg')
       <div class="nav-background">
-        <img class="active" src="http://placehold.it/1400x700" alt="cityscape">
+        <img class="active" src="{{ url('img/slide5.3.png') }}" alt="cityscape">
       </div>
 @endsection
 
@@ -59,10 +68,6 @@
                       <label for="tel">Mobile</label>
                     </div>
                     <div class="input-field">
-                      <input placeholder="Enter Username" id="username" name="username" type="text" class="validate">
-                      <label for="username">Username</label>
-                    </div>
-                    <div class="input-field">
                       <input placeholder="Enter Password" id="password" name="password" type="password" class="validate">
                       <label for="password">Password</label>
                     </div>
@@ -80,9 +85,9 @@
                     <div class="input-field">
                       <select placeholder="Enter Vessel Type" id="vesseltype" name="vesseltype">
                         <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Speed Launch</option>
-                        <option value="2">Ferry</option>
-                        <option value="3">Dhoani</option>
+                        @foreach($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
                       </select>
                       <label for="vesseltype">Vessel Type</label>
                     </div>
@@ -161,10 +166,12 @@
             data: serializedData,
             dataType: "json",
             success: function( data, textStatus, jQxhr ){
-                console.log(data);
+              // var obj = JSON.parse(data);
+              // console.log(obj);
+              swal(data.error_caption, data.error_message, data.error_type);
             },
-            error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
+            error: function() {
+              swal('Failed', 'Request process failed. Please try again.', 'error');
             }
         });
       }
