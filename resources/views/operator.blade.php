@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('head-extra')
+  <style type="text/css">
+    nav .nav-background img, nav .nav-background .pattern {
+      filter: none;
+    }
+
+    nav .nav-background {
+      opacity: .9;
+    }
+  </style>
 @endsection
 
 @section('header-type')
@@ -13,7 +22,7 @@
 
 @section('nav-sliders-bg')
       <div class="nav-background">
-        <img class="active" src="http://placehold.it/1400x700" alt="cityscape">
+        <img class="active" src="{{ url('img/slide5.3.png') }}" alt="cityscape">
       </div>
 @endsection
 
@@ -45,6 +54,7 @@
               <div class="card-content grey lighten-4">
                 <div id="userinfo">
                   <form id="operator-info">
+                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="input-field">
                       <input placeholder="Enter Full Name" id="fullname" name="fullname" type="text" class="validate">
                       <label for="fullname">Full Name</label>
@@ -56,10 +66,6 @@
                     <div class="input-field">
                       <input placeholder="Enter Mobile Number" id="tel" name="tel" type="tel" class="validate">
                       <label for="tel">Mobile</label>
-                    </div>
-                    <div class="input-field">
-                      <input placeholder="Enter Username" id="username" name="username" type="text" class="validate">
-                      <label for="username">Username</label>
                     </div>
                     <div class="input-field">
                       <input placeholder="Enter Password" id="password" name="password" type="password" class="validate">
@@ -79,9 +85,9 @@
                     <div class="input-field">
                       <select placeholder="Enter Vessel Type" id="vesseltype" name="vesseltype">
                         <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Speed Launch</option>
-                        <option value="2">Ferry</option>
-                        <option value="3">Dhoani</option>
+                        @foreach($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
                       </select>
                       <label for="vesseltype">Vessel Type</label>
                     </div>
@@ -90,7 +96,7 @@
                       <label for="vesselname">Vessel Name</label>
                     </div>
                     <div class="input-field">
-                      <input placeholder="Enter Registration Number" id="registrationnumber" name="registrationnumber" type="email" class="validate">
+                      <input placeholder="Enter Registration Number" id="registrationnumber" name="registrationnumber" type="text" class="validate">
                       <label for="registrationnumber">Reg Number</label>
                     </div>
                     <div class="input-field">
@@ -110,13 +116,11 @@
                       <label for="speed">Speed</label>
                     </div>
                     <div class="input-field center">
-                      <button class="btn waves-effect waves-light" onclick="Register()">Register</button>
+                      <button class="btn waves-effect waves-light" onclick="Register()" type="button">Register</button>
                     </div>
                   </form>
                 </div>
               </div>
-
-
 
               <br/>
               <p class="center"><a href="register">Click here for USER registration.</a></p>
@@ -156,19 +160,19 @@
       function Register() {
         var serializedData = $('#operator-info, #vessel-info').serialize();
         console.log(serializedData);
-        // $.ajax({
-        //   url: "registeroperator",
-        //   context: document.body
-        // }).done(function(data) {
-        //   console.log(data)
-        // });
         $.ajax({
-          type: "POST",
-          url: 'registeroperator',
-          data: serializedData,
-          success: function(){
-            alert('success');
-          },
+            url: 'registeroperator',
+            contentType: 'application/json',
+            data: serializedData,
+            dataType: "json",
+            success: function( data, textStatus, jQxhr ){
+              // var obj = JSON.parse(data);
+              // console.log(obj);
+              swal(data.error_caption, data.error_message, data.error_type);
+            },
+            error: function() {
+              swal('Failed', 'Request process failed. Please try again.', 'error');
+            }
         });
       }
     </script>

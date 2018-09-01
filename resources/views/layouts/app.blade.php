@@ -11,12 +11,12 @@
     <!-- Lato Font -->
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <!-- Stylesheet -->
-    <link href="sass/kunbu.css" rel="stylesheet">
-    <link href="sass/ionicons.css" rel="stylesheet">
-    <link href="css/select2.min.css" rel="stylesheet">
-    <link href="css/select2-materialize.css" rel="stylesheet">
-    <link href="css/loadingbar.css" rel="stylesheet" type="text/css" />
-    <link href="css/sweetalert.css" rel="stylesheet" type="text/css" >
+    <link href="{{ url('sass/kunbu.css') }}" rel="stylesheet">
+    <link href="{{ url('sass/ionicons.css') }}" rel="stylesheet">
+    <link href="{{ url('css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ url('css/select2-materialize.css') }}" rel="stylesheet">
+    <link href="{{ url('css/loadingbar.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url('css/sweetalert.css') }}" rel="stylesheet" type="text/css" >
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -33,16 +33,17 @@
       @yield('nav-sliders-bg')
 
       <div class="nav-wrapper container">
-        <a href="home" class="brand-logo">kunbu.mv</a>
+        <a href="{{ url('home') }}" class="brand-logo">kunbu.mv</a>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="home">Home</a></li>
-          <li><a href="destinations" id="menu-destination">Destinations</a></li>
-          <li><a href="vessels">Vessels</a></li>
-          <li><a href="logistics">Logistics</a></li>
-          <li><a href="about">About</a></li>
-          <li><a href="login">Login</a></li>
-          <li><a href="register">Register</a></li>
+          <li><a href="{{ url('home') }}">Home</a></li>
+          <li><a href="{{ url('destinations') }}" id="menu-destination">Destinations</a></li>
+          <li><a href="{{ url('vessels') }}">Vessels</a></li>
+          <li><a href="{{ url('logistics') }}">Logistics</a></li>
+          <li><a href="{{ url('excursion') }}">Excursion</a></li>
+          <li><a href="{{ url('about') }}">About</a></li>
+          <li><a href="{{ url('login') }}">Login</a></li>
+          <li><a href="{{ url('register') }}">Register</a></li>
         </ul>
 
       </div>
@@ -54,13 +55,14 @@
     @yield('nav-extra')
 
     <ul class="side-nav" id="nav-mobile">
-      <li><a href="home"><i class="material-icons">home</i>Home</a></li>
-      <li><a href="destinations"><i class="material-icons">place</i>Destinations</a></li>
-      <li><a href="vessels"><i class="material-icons">directions_boat</i>Vessels</a></li>
-      <li><a href="logistics"><i class="material-icons">directions_boat</i>Logistics</a></li>
-      <li><a href="about"><i class="material-icons">info</i>About</a></li>
-      <li><a href="login"><i class="material-icons">lock</i>Login</a></li>
-      <li><a href="register"><i class="material-icons">person</i>Register</a></li>
+      <li><a href="{{ url('home') }}"><i class="material-icons">home</i>Home</a></li>
+      <li><a href="{{ url('destinations') }}"><i class="material-icons">place</i>Destinations</a></li>
+      <li><a href="{{ url('vessels') }}"><i class="material-icons">directions_boat</i>Vessels</a></li>
+      <li><a href="{{ url('logistics') }}"><i class="material-icons">directions_boat</i>Logistics</a></li>
+      <li><a href="{{ url('about') }}"><i class="material-icons">directions_boat</i>Excursion</a></li>
+      <li><a href="{{ url('about') }}"><i class="material-icons">info</i>About</a></li>
+      <li><a href="{{ url('login') }}"><i class="material-icons">lock</i>Login</a></li>
+      <li><a href="{{ url('register') }}"><i class="material-icons">person</i>Register</a></li>
     </ul>
 
     @yield('content')
@@ -83,11 +85,11 @@
       <div class="modal-content">
         <p>
           <b>Travels From:</b> Mathiveri, Ukulhas, Rasdhoo to Male', Hulhumale </br>
-          <b>Trip Duration:</b> 90 mins </br>
+          <!-- <b>Trip Duration:</b> 90 mins </br> -->
           <b>Schedule Starts:</b> 6:00 AM @ Mathiveri </br>
         </p>
 
-        <table class="striped highlight responsive-table">
+        <table class="striped highlight responsive-table" id="tableRotesList">
           <thead>
             <tr>
                 <th>Island</th>
@@ -96,7 +98,7 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody id="schedule-more-tbody">
             <tr>
               <td>Mathiveri</td>
               <td>06:00 AM</td>
@@ -150,35 +152,37 @@
         <h5>Contact<br/><small>Send a message to the vessel owner.</small></h5>
       </div>
       <div class="modal-content">
-        <form>
+        <form id="messageForm" method="POST" action="message">
+          <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+          <input type="hidden" name="messagevesselid" id="messagevesselid">
           <div class="row">
             <div class="input-field col s12 m6">
-              <input placeholder="Enter First Name" id="firstname" type="text" class="validate">
+              <input placeholder="Enter First Name" id="firstname" name="firstname" type="text" class="validate">
               <label for="firstname">First Name</label>
             </div>
             <div class="input-field col s12 m6">
-              <input placeholder="Enter Last Name" id="lastname" type="text" class="validate">
+              <input placeholder="Enter Last Name" id="lastname" name="lastname" type="text" class="validate">
               <label for="lastname">Last Name</label>
             </div>
             <div class="input-field col s12 m6">
-              <input placeholder="Enter Mobile Number" id="mobilenum" type="text" class="validate">
+              <input placeholder="Enter Mobile Number" id="mobilenum" name="mobilenum" type="text" class="validate">
               <label for="mobilenum">Mobile</label>
             </div>
             <div class="input-field col s12 m6">
-              <input placeholder="Enter Email Address" id="email" type="email" class="validate">
+              <input placeholder="Enter Email Address" id="email" name="email" type="email" class="validate">
               <label for="email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <textarea placeholder="Enter the Message" id="message" name="message" class="materialize-textarea"></textarea>
-              <label for="message">Textarea</label>
+              <textarea placeholder="Enter your Message" id="message" name="message" class="materialize-textarea"></textarea>
+              <label for="message">Message</label>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">send message</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="$('#messageForm').submit()">send message</a>
       </div>
     </div>
 
@@ -327,16 +331,20 @@
 
     <!-- Core Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/color-thief.min.js"></script>
-    <script src="js/galleryExpand.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/sweetalert.min.js"></script>
+    <script src="{{ url('js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url('js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ url('js/materialize.min.js') }}"></script>
+    <script src="{{ url('js/color-thief.min.js') }}"></script>
+    <script src="{{ url('js/galleryExpand.js') }}"></script>
+    <script src="{{ url('js/init.js') }}"></script>
+    <script src="{{ url('js/sweetalert.min.js') }}"></script>
+    
+    @if(session()->has('error_message'))
+      <script>swal("{{ session()->get('error_caption') }}", "{{ session()->get('error_message') }}", "{{ session()->get('error_type') }}");</script>
+    @endif
 
     <!-- Javascript Libs -->
-    <script src="js/select2.full.min.js"></script>
+    <script src="{{ url('js/select2.full.min.js') }}"></script>
 
     <!-- Body extra -->
     @yield('body-extra')
@@ -388,9 +396,9 @@
           html: true,
           showConfirmButton: false  
         });
-        $('.showSweetAlert > p[style="display: block;"]')('<div class="preloader-wrapper big active"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
+        // $('.showSweetAlert > p[style="display: block;"]')('<div class="preloader-wrapper big active"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
 
-        $.ajax("api.php?id="+id)
+        $.ajax("followme?id="+id)
         .done(function(data) {
           if(data == '') {
             $('.showSweetAlert > p[style="display: block;"]')('');
@@ -445,6 +453,7 @@
       }
 
       function sendMessage(id) {
+        $('#messagevesselid').val(id);
         $('#modal-message').modal('open');
       }
 
