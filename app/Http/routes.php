@@ -25,8 +25,10 @@ Route::get('about', function () { return view('about'); });
 // Users
 Route::get('registerUser', 'RegistrationController@create');
 Route::post('registerUser', 'RegistrationController@store');
+Route::get('dashboard', 'RegistrationController@dashboard');
 
 Route::get('loginUser', 'SessionsController@create');
+
 
 
 // Route::get('operator', function () {  });

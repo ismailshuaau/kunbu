@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\User;
+use App\Http\Controllers\Auth;
 use Validator;
 
 class RegistrationController extends Controller
@@ -47,8 +48,17 @@ class RegistrationController extends Controller
         $user->verified = 0;
         $user->save();
 
-        auth()->login($user);
+        // $auth = auth()->login($user);
 
-        return redirect('/');
+        $auth = \Auth::login($user);
+
+        // dd($auth);
+
+        return redirect('/dashboard');
+    }
+
+    public function dashboard()
+    {
+        return view('users.dashboard');
     }
 }
