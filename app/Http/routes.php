@@ -55,6 +55,7 @@ Route::group(['prefix' => 'operator'], function () {
 	Route::post('schedule/createroute', 'SchedulesController@createRoute');
 	Route::get('schedule/deleteroute', 'SchedulesController@destroyRoute');
 
+	Route::get('messages', 'MessagesController@indexAdmin');
 
 
 });

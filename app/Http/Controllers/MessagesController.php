@@ -5,12 +5,25 @@ namespace App\Http\Controllers;
 use Request;
 
 use App\Http\Requests;
+// use App\Contact;
 
-use Contacts as Contacts;
+use App\Contact as Contacts;
 
 class MessagesController extends Controller
 {
     //
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexAdmin()
+    {
+        //
+        $contacts = Contacts::all();
+        return view('operator.messages')->with(['contacts' => $contacts]);
+    }
 
     /**
      * Show the form for creating a new resource.
