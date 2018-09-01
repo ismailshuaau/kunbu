@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Request;
+use Auth;
 
 use App\Http\Requests;
 
@@ -11,6 +12,18 @@ use App\Tickets as Tickets;
 class TicketsController extends Controller
 {
     //
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $tickets = Tickets::where('email', '=', Auth::user()->email)->get();
+        return view('user.tickets')->with(['tickets' => $tickets]);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -71,13 +71,13 @@
         </li>
         <li class="active"><a href="dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
         <li><div class="divider"></div></li>
-        <li><a href="vessels"><i class="material-icons">directions_boat</i>Vessels</a></li>
-        <li><a href="schedule"><i class="material-icons">event</i>Schedule</a></li>
+        {{-- <li><a href="vessels"><i class="material-icons">directions_boat</i>Vessels</a></li> --}}
+        {{-- <li><a href="schedule"><i class="material-icons">event</i>Schedule</a></li> --}}
         <li><a href="tickets"><i class="material-icons">event_seat</i>Tickets</a></li>
-        <li><a href="hire"><i class="material-icons">star</i>Hire</a></li>
-        <li><a href="messages"><i class="material-icons">message</i>Messages</a></li>
+        {{-- <li><a href="hire"><i class="material-icons">star</i>Hire</a></li> --}}
+        {{-- <li><a href="messages"><i class="material-icons">message</i>Messages</a></li> --}}
         <li><div class="divider"></div></li>
-        <li><a href="users"><i class="material-icons">people</i>Users</a></li>
+        {{-- <li><a href="users"><i class="material-icons">people</i>Users</a></li> --}}
         <li><a href="settings"><i class="material-icons">settings</i>Settings</a></li>
         <li><a href="logout"><i class="material-icons">lock</i>Logout</a></li>i>
         
@@ -107,49 +107,6 @@
           </div>
         </div>
       </div>
-    </div>
-u
-    <div class="row margin-left-m10-lg">
-      <div class="col s12 m6 l3">
-        <div class="card-panel dashboard-notification-1 grey lighten-5 grey-text">
-          <div class="header-wrapper center">
-            <span><i class="large material-icons">grade</i></span>
-            <p class="caption">Num of Hires<br>all hires this month</p>
-          </div>
-          <p class="count">0</p>
-        </div>
-      </div>
-
-      <div class="col s12 m6 l3">
-        <div class="card-panel dashboard-notification-1 grey lighten-5 cyan-text text-darken-1">
-          <div class="header-wrapper center">
-            <span><i class="large material-icons">event_seat</i></span>
-            <p class="caption">Num of Tickets<br>all tickets sold this month</p>
-          </div>
-          <p class="count">0</p>
-        </div>
-      </div>
-
-      <div class="col s12 m6 l3">
-        <div class="card-panel dashboard-notification-1 grey lighten-5 red-text">
-          <div class="header-wrapper center">
-            <span><i class="large material-icons">event_seat</i></span>
-            <p class="caption">Tickets Pending<br>tickets to be approved</p>
-          </div>
-          <p class="count">0</p>
-        </div>
-      </div>
-
-      <div class="col s12 m6 l3">
-        <div class="card-panel dashboard-notification-1 grey lighten-5 blue-grey-text">
-          <div class="header-wrapper center">
-            <span><i class="large material-icons">message</i></span>
-            <p class="caption">Num of Contacts<br>contacts monthly</p>
-          </div>
-          <p class="count">0</p>
-        </div>
-      </div>
-
     </div>
     
   </main>

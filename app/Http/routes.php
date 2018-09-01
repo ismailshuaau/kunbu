@@ -26,6 +26,7 @@ Route::get('about', function () { return view('about'); });
 Route::get('registerUser', 'RegistrationController@create');
 Route::post('registerUser', 'RegistrationController@store');
 Route::get('dashboard', 'RegistrationController@dashboard');
+Route::get('tickets', 'TicketsController@index');
 
 Route::get('loginUser', 'SessionsController@create');
 
